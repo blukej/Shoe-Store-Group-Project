@@ -1,7 +1,7 @@
-<?php require_once('./Model.php'); ?>
+<?php require_once('Model.php'); ?>
 <?php class Shoe {
 
-private $id;
+//private $id;
 private $name;
 private $brand;
 private $size;
@@ -15,13 +15,13 @@ public function __construct($args) {
         throw new Exception('Shoe constructor requires an array');
     }
 
-    $this->setID($args['id'] ?? NULL);
+    //$this->setID($args['id'] ?? NULL);
     $this->setName($args['name'] ?? NULL);
     $this->setBrand($args['brand'] ?? NULL);
     $this->setSize($args['size'] ?? NULL);
     $this->setPrice($args['price'] ?? NULL);
 
-    $this->id = $args['id']     ?? NULL;
+    //$this->id = $args['id']     ?? NULL;
     $this->name = $args['name'] ?? 'Untilted Shoe';
     $this->brand = $args['brand'] ?? 'Untilted Brand';
     $this->size = $args['size'] ?? 'Untilted Size';
@@ -36,31 +36,31 @@ public function getName() {
     return $this->name;
 }
 
-public function setBrand() {
+public function getBrand() {
     return $this->brand;
 }
 
-public function setSize() {
+public function getSize() {
     return $this->size;
 }
 
-public function setPrice() {
+public function getPrice() {
     return $this->price;
 }
 
-public function setID($id) {
+//public function setID($id) {
     
-    if($id === NULL) {
-        $this->id = getID();
-        return;
-    }
+    //if($id === NULL) {
+    //    $this->id = getID();
+    //    return;
+    //}
     
-    if(!Model::isIdValid($id)) {
-        throw new Exception('ID for Author object must be positive numeric');
-    }
+//    if(!Model::isIdValid($id)) {
+//        throw new Exception('ID for Author object must be positive numeric');
+//    }
 
-    $this->id = $id;
-}
+//    $this->id = $id;
+//}
 
 public function setName($name) {
 
@@ -97,7 +97,7 @@ public function setSize($size) {
         return;
     }
 
-    if(!preg_match('/^[a-z]{3,55}$/i', $size)) {
+    if(!preg_match('/^\d*\.?\d*[0-9]$/i', $size)) {
         throw new Exception('Size for Shoe does not match expected pattern');
     }
 
@@ -111,8 +111,8 @@ public function setPrice($price) {
         return;
     }
     
-    if(!Model::isPriceValid($price)) {
-        throw new Exception('Price for Author object must be positive numeric');
+    if(!preg_match('/^\d*\.?\d*[0-9]$/i', $price)) {
+        throw new Exception('Size for Shoe does not match expected pattern');
     }
 
     $this->price = $price;
@@ -125,11 +125,9 @@ public function save(PDO $pdo) {
         //return;
     }
 
-    if($pdo->closedCursor()) {
-        return;
-    }
+    //
    
-    if($this->id === NULL) {
+   // if($this->id === NULL) {
         // Insert
         $stt = $pdo->prepare('INSERT INTO shoes (name, brand, size, price) 
         VALUES (:name, :brand, :size, :price)');
@@ -141,29 +139,29 @@ public function save(PDO $pdo) {
         ]);
 
         $saved = $stt->rowCount() === 1;
-        //$last_id = $saved->lastInsertId();
+        // //$last_id = $saved->lastInsertId();
 
-        if($saved) {
-            $this->id = $pdo->lastInsertId();
-        }
+        // if($saved) {
+        //     $this->id = $pdo->lastInsertId();
+        // }
 
         return $saved;
-    }
-    else {
-        //Update
-        $stt = $pdo->prepare('UPDATE shoes SET name=:name, brand=:brand, size=:size, price=:price
-         WHERE id=:id
-        LIMIT 1');
-        $stt->execute([
-            'id'   => $this->getID(),
-            'name' => $this->getName(),
-            'brand' => $this->getBrand(),
-            'size' => $this->getSize(),
-            'price' => $this->getPrice()
-        ]);
+    // }
+    // else {
+    //     //Update
+    //     $stt = $pdo->prepare('UPDATE shoes SET name=:name, brand=:brand, size=:size, price=:price
+    //      WHERE id=:id
+    //     LIMIT 1');
+    //     $stt->execute([
+    //         'id'   => $this->getID(),
+    //         'name' => $this->getName(),
+    //         'brand' => $this->getBrand(),
+    //         'size' => $this->getSize(),
+    //         'price' => $this->getPrice()
+    //     ]);
 
-        return $stt->rowCount() == 1;
-    }
+    //     return $stt->rowCount() == 1;
+    // }
 }
 
 public function delete($pdo) {
