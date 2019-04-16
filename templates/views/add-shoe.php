@@ -6,10 +6,10 @@
     <input id='Brand' type='text' name='brand'>
 
     <label for='Size'>Size</label>
-    <input id='Size' type='text' name='size'>
+    <input id='Size' type='decimal' name='size'>
 
     <label for='Price'>Price</label>
-    <input id='Price' type='number' name='price'>
+    <input id='Price' type='decimal' name='price'>
 
     <input type='submit' value='Submit'>
 </form>
