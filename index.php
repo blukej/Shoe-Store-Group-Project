@@ -17,6 +17,8 @@
   $app->GET('/add-shoe', 'AddShoe');
   $app->POST('/add-shoe', 'AddShoeProcess');
 
+  $app->GET('/delete-shoe', 'DeleteShoe');
+
   // Process the request
   $app->dispatch();
 

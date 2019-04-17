@@ -14,7 +14,7 @@
 		<td><?= $display["name"]; ?> </td>
         <td><?= $display["size"]; ?> </td>
         <td><?= $display["price"]; ?> </td>
-		<td><a href='<?= APP_BASE_URL ?>/delete-shoe?shoe_id=<?=$display['id']?>'> Delete </a>/<a href='<?= APP_BASE_URL ?>/update-shoe?update=<?=$display['id']?>'> Update </a></td>
+		<td><a onclick='return confirm("Are you sure you want to delete the shoe with the Brand of <?= $display["brand"]; ?> and a shoe name of <?= $display["name"]; ?> from the database?")' href='<?= APP_BASE_URL?>/delete-shoe?shoe_id=<?=$display['id']?>'> Delete </a>/<a href='<?= APP_BASE_URL?>/update-shoe?update=<?=$display['id']?>'> Update </a></td>
 	</tr>
 	<?php endforeach; ?>
 </table>
