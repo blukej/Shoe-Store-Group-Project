@@ -329,8 +329,8 @@
 
       http_response_code($this->status);
 
-      foreach($this->headers as $header=>$content) {
-        header("$header: $content");
+      foreach($this->headers as $header=>$value) {
+        header("$header: $value");
       }
 
       echo $content;
