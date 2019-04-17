@@ -15,7 +15,9 @@
   $app->GET('/example', 'Example');
   $app->GET('/display-shoes', 'DisplayShoes');
   $app->GET('/add-shoe', 'AddShoe');
+  $app->GET('/update-shoe', 'UpdateShoe');
   $app->POST('/add-shoe', 'AddShoeProcess');
+  $app->POST('/update-shoe', 'UpdateShoeProcess');
 
   $app->GET('/delete-shoe', 'DeleteShoe');
 
