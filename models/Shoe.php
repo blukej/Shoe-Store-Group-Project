@@ -200,26 +200,41 @@ public function findAll($pdo) {
 }
 
 public static function findOneById($id, $pdo) {
-    if(!Model::isIdValid($id)) {
-        throw new Exception('ID for Shoe must be positive numeric');
-    }
+    //if(!Model::isIdValid($id)) {
+    //    throw new Exception('ID for Shoe must be positive numeric');
+    //}
 
-    if (!($pdo instanceof PDO)) {
-        throw new Exception('Invalid PDO object for Shoe findOneById');
-    }
+    //if (!($pdo instanceof PDO)) {
+    //    throw new Exception('Invalid PDO object for Shoe findOneById');
+    //}
 
-    $stt = $pdo->prepare('SELECT id, name, brand, size, price FROM shoes WHERE id = :id LIMIT 1');
+    $stt = $pdo->prepare('SELECT name, brand, size, price FROM shoes WHERE id = :id LIMIT 1');
     $stt->execute([
         'id' => $id
     ]);
 
-    $row = $stt->fetch();
+    $row = $stt->fetchAll();
 
     if ($row === FALSE) {
         return NULL;
     } else {
         new Shoe($row);
     }
+    return $row;
+}
+
+public function update($id, $pdo) {
+    //Update
+        $stt = $pdo->prepare('UPDATE shoes SET name=:name, brand=:brand, size=:size, price=:price
+        WHERE id=:id
+        LIMIT 1');
+        $stt->execute([
+             'id'   => $id,
+             'name' => $this->getName(),
+             'brand' => $this->getBrand(),
+             'size' => $this->getSize(),
+             'price' => $this->getPrice()
+        ]);      
 }
 
 } ?>
