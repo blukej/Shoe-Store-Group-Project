@@ -15,13 +15,13 @@ public function __construct($args) {
         throw new Exception('Shoe constructor requires an array');
     }
 
-    //$this->setID($args['id'] ?? NULL);
+    $this->setID($args['id'] ?? NULL);
     $this->setName($args['name'] ?? NULL);
     $this->setBrand($args['brand'] ?? NULL);
     $this->setSize($args['size'] ?? NULL);
     $this->setPrice($args['price'] ?? NULL);
 
-    //$this->id = $args['id']     ?? NULL;
+    $this->id = $args['id']     ?? NULL;
     $this->name = $args['name'] ?? 'Untilted Shoe';
     $this->brand = $args['brand'] ?? 'Untilted Brand';
     $this->size = $args['size'] ?? 'Untilted Size';
@@ -48,19 +48,19 @@ public function getPrice() {
     return $this->price;
 }
 
-//public function setID($id) {
+public function setID($id) {
     
-    //if($id === NULL) {
-    //    $this->id = getID();
-    //    return;
-    //}
+    if($id === NULL) {
+       $this->id = NULL;
+       return;
+    }
     
 //    if(!Model::isIdValid($id)) {
-//        throw new Exception('ID for Author object must be positive numeric');
+//        throw new Exception('ID for Shoe object must be positive numeric');
 //    }
 
-//    $this->id = $id;
-//}
+   $this->id = $id;
+}
 
 public function setName($name) {
 
@@ -107,7 +107,7 @@ public function setSize($size) {
 public function setPrice($price) {
     
     if($price === NULL) {
-        $this->price = getPrice();
+        $this->price = NULL;
         return;
     }
     
@@ -196,17 +196,7 @@ public function findAll($pdo) {
     $stt = $pdo->prepare('SELECT id, name, brand, size, price FROM shoes');
     $stt->execute();
 
-    //return $stt->fetchAll();
-    //[
-    //    ['id' => 1, 'name' => 'Shane']
-    //]
-    $shoes = [];
-
-    foreach($stt->fetchAll() as $row) {
-        array_push($shoes, new Shoe($row));
-    }
-
-    return $shoes;
+    return $stt;
 }
 
 public static function findOneById($id, $pdo) {

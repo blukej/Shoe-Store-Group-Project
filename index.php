@@ -13,6 +13,7 @@
   // processed by the controller at controllers/Home.php
   $app->GET('/',        'Home');
   $app->GET('/example', 'Example');
+  $app->GET('/display-shoes', 'DisplayShoes');
   $app->GET('/add-shoe', 'AddShoe');
   $app->POST('/add-shoe', 'AddShoeProcess');
 
