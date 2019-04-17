@@ -164,28 +164,28 @@ public function save(PDO $pdo) {
     // }
 }
 
-public function delete($pdo) {
+public function delete($pdo, $id) {
     if(!($pdo instanceof PDO)) {
         throw new Exception('Invalid PDO object for Shoe delete');
         //return;
     }
 
-    if($this->getID() === NULL) {
-        throw new Exception('Cannot delete a transient Shoe');
-    }
+    // if($this->getID() === NULL) {
+    //     throw new Exception('Cannot delete a transient Shoe');
+    // }
 
     $stt = $pdo->prepare('DELETE FROM shoes WHERE id=:id LIMIT 1');
     $stt->execute([
-        'id' => $this->getID()
+        'id' => $id
     ]);
     
-        $deleted = $stt->rowCount() === 1;
+        // $deleted = $stt->rowCount() === 1;
 
-        if($deleted) {
-            $this->id = getID(NULL);
-        }
+        // if($deleted) {
+        //     $this->id = getID(NULL);
+        // }
 
-    return $deleted($pdo);
+   // return $deleted($pdo);
 }
 
 public function findAll($pdo) {
