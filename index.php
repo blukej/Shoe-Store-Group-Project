@@ -11,15 +11,20 @@
 
   // Define some routes. Here: requests to / will be
   // processed by the controller at controllers/Home.php
-  $app->GET('/',        'Home');
-  $app->GET('/example', 'Example');
+  $app->GET('/',              'Home');
+  $app->GET('/example',       'Example');
   $app->GET('/display-shoes', 'DisplayShoes');
-  $app->GET('/add-shoe', 'AddShoe');
-  $app->GET('/update-shoe', 'UpdateShoe');
-  $app->POST('/add-shoe', 'AddShoeProcess');
-  $app->POST('/update-shoe', 'UpdateShoeProcess');
+  $app->GET('/add-shoe',      'AddShoe');
+  $app->GET('/login',         'Login');
+  $app->GET('/register',      'Register'); 
+  $app->GET('/update-shoe',   'UpdateShoe');
+  $app->GET('/delete-shoe',   'DeleteShoe');
+  $app->POST('/add-shoe',     'AddShoeProcess');
+  $app->POST('/update-shoe',  'UpdateShoeProcess');
+  $app->POST('/login',        'LoginProcess');
+  $app->POST('/register',     'RegisterProcess');
 
-  $app->GET('/delete-shoe', 'DeleteShoe');
+  
 
   // Process the request
   $app->dispatch();
