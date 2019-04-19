@@ -2,8 +2,7 @@
 <?php return function($req, $res) {
 
   $res->status(501);
-  $db = new PDO('mysql:host=localhost;dbname=shoe_shop;
-  charset=utf8mb4', 'root', '');
+  $db = \Rapid\Database::getPDO();
 
   $shoes = Shoe::findAll($db);
 
