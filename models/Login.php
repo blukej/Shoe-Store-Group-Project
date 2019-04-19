@@ -1,0 +1,160 @@
+<?php class Login {
+
+private $userID;
+private $username;
+private $email;
+private $hash;
+private $role;
+
+public function __construct($args) {
+
+    if(!is_array($args)) {
+        throw new Exception('Login constructor requires an array')
+    }
+
+    $this->setUserID($args['userID'] ?? NULL);
+    $this->setUserName($args['userName'] ?? NULL);
+    $this->setEmail($args['email'] ?? NULL);
+    $this->setHash($args['hash'] ?? NULL);
+    $this->setRole($args['role'] ?? NULL);
+
+    $this->userID = $args['userID']     ?? NULL;
+    $this->userName = $args['userName'] ?? 'Untilted userName';
+    $this->email = $args['email'] ?? 'Untilted Email';
+    $this->hash = $args['hash'] ?? 'Untilted Hash';
+    $this->role = $args['role'] ?? 'Untilted Role';
+}
+
+public function getUserID() {
+    return $this->userID;
+}
+
+public function getUserName() {
+    return $this->userName;
+}
+
+public function getEmail() {
+    return $this->email;
+}
+
+public function getHash() {
+    return $this->hash;
+}
+
+public function getRole() {
+    return $this->role;
+}
+
+public function setUserID($id) {
+    
+    if($userID === NULL) {
+       $this->userID = NULL;
+       return;
+    }
+
+   $this->userID = $userID;
+}
+
+public function setUserName($userName) {
+
+    if($userName === NULL) {
+        $this->userName = NULL;
+        return;
+    }
+
+    if(!preg_match('/^[a-z]{3,55}$/i', $userName)) {
+        throw new Exception('User Name for Login does not match expected pattern');
+    }
+
+    $this->userName = $userName;
+}
+
+
+public function setEmail($email) {
+
+    if($email === NULL) {
+        $this->email = NULL;
+        return;
+    }
+
+    if(!preg_match('/^[a-z]{3,55}$/i', $email)) {
+        throw new Exception('Email for Login does not match expected pattern');
+    }
+
+    $this->email = $email;
+}
+
+public function setHash($email) {
+
+    if($hash === NULL) {
+        $this->hash = NULL;
+        return;
+    }
+
+    if(!preg_match('/^[a-z]{3,55}$/i', $hash)) {
+        throw new Exception('Hash for Login does not match expected pattern');
+    }
+
+    $this->hash = $hash;
+}
+
+public function setRole($role) {
+
+    if($role === NULL) {
+        $this->role = NULL;
+        return;
+    }
+
+    if(!preg_match('/^[a-z]{3,55}$/i', $role)) {
+        throw new Exception('Role for Login does not match expected pattern');
+    }
+
+    $this->role = $role;
+}
+
+public function register(PDO $pdo,$password) {
+   
+    if(!($pdo instanceof PDO)) {
+        throw new Exception('Invalid PDO object for Shoe save');
+        //return;
+    }
+
+    $hash = password_hash($password, PASSWORD_BCRYPT, ['cost' => 12]);
+
+    $stt = $pdo->prepare('INSERT INTO users (userName, email, hash, role) 
+    VALUES (:userName, :email, :hash, :role)');
+    $stt->execute([
+        'userName' => $this->getUserName(),
+        'email' => $this->getEmail(),
+        'hash' => $this->getHash(),
+        'role' => $this->getRole()
+    ]);
+
+    $saved = $stt->rowCount() === 1;
+
+    return $saved;
+}
+
+public function login(PDO $pdo,$password) {
+   
+    if(!($pdo instanceof PDO)) {
+        throw new Exception('Invalid PDO object for Login register');
+        //return;
+    }
+
+    $hash = password_hash($password, PASSWORD_BCRYPT, ['cost' => 12]);
+
+    $stt = $db->prepare('SELECT userName, hash FROM users WHERE userName = :userName LIMIT 1');
+    $stt->execute([
+      'userName' => $_POST['userName']
+    ]);
+
+    $row = $stt->fetch();
+
+    if ($row === FALSE || password_verify($_POST['password'], $row['hash']) !== TRUE) {
+        header('Location: login.php?message=BAD_CREDENTIALS');
+        exit();
+    }
+}
+
+}?>
