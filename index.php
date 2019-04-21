@@ -7,8 +7,6 @@
   // Create a new Router instance
   $app = new \Rapid\Router();
 
-  
-
   // Define some routes. Here: requests to / will be
   // processed by the controller at controllers/Home.php
   $app->GET('/',              'Home');
@@ -16,6 +14,7 @@
   $app->GET('/display-shoes', 'DisplayShoes');
   $app->GET('/add-shoe',      'AddShoe');
   $app->GET('/login',         'Login');
+  $app->GET('/logout',        'Logout');
   $app->GET('/register',      'Register'); 
   $app->GET('/update-shoe',   'UpdateShoe');
   $app->GET('/delete-shoe',   'DeleteShoe');

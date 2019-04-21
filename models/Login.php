@@ -156,7 +156,7 @@ public function login(PDO $pdo,$password) {
         exit();
     }
 
-    $_SESSION['USERNAME'] = $row['username'];
+    $_SESSION['USERNAME'] = $row['userName'];
 
 }
 
