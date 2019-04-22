@@ -112,7 +112,7 @@
      * path of the current script (relative to the document root).
      */
 
-    private function getLocalPath() {
+    public function getLocalPath() {
 
       // Get requested path, minus a query string if there is one
       $localPath = explode('?', $_SERVER['REQUEST_URI'])[0];

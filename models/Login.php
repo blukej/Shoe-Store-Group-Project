@@ -57,14 +57,26 @@ public function setUserID($userID) {
 
 public function setUserName($userName) {
 
-    if($userName === NULL) {
-        $this->userName = NULL;
-        return;
+    $rapid = new \Rapid\Request;
+    $path = $rapid->getLocalPath();
+
+    if($userName == NULL) {
+        if($path === '/login'){
+            header('Location: login?message=USERNAME_MISSING');
+            $this->userName = NULL;
+            return;
+            
+        }
+        else{
+            header('Location: register?message=USERNAME_MISSING');
+            $this->userName = NULL;
+            return;
+        }
     }
 
-    if(!preg_match('/^[a-z][A-Z]{3,55}$/i', $userName)) {
-       throw new Exception('User Name for registering does not match expected pattern');
-    }
+    // if($userName == NULL) {
+    //    throw new Exception('User Name for registering does not match expected pattern');
+    // }
 
     $this->userName = $userName;
 }
