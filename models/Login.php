@@ -62,9 +62,9 @@ public function setUserName($userName) {
         return;
     }
 
-    // if(!preg_match('/^[a-z]{3,55}$/i', $userName)) {
-    //    throw new Exception('User Name for registering does not match expected pattern');
-    // }
+    if(!preg_match('/^[a-z][A-Z]{3,55}$/i', $userName)) {
+       throw new Exception('User Name for registering does not match expected pattern');
+    }
 
     $this->userName = $userName;
 }
@@ -77,9 +77,9 @@ public function setEmail($email) {
         return;
     }
 
-    // if(!preg_match('/^[a-z]{3,55}$/i', $email)) {
-    //    throw new Exception('Email for registering does not match expected pattern');
-    // }
+    if(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+       throw new Exception('Email for registering does not match expected pattern');
+    }
 
     $this->email = $email;
 }

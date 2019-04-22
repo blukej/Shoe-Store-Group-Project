@@ -19,7 +19,7 @@
     exit();
   }
   else{
-    $res->send('<p>You are logged out');
+    $res->send('<p>You are not logged in, please log in to view the database <a href='.'login'.'>Login</a></p>');
   }
 
 } ?>

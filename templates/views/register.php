@@ -11,3 +11,5 @@
 
     <input type='submit' value='Register'>
 </form>
+
+<p>If you already have account, please log in here. <a href="login"> Login </a></p>
