@@ -2,7 +2,7 @@
     
     session_start();
 
-    if (isset($_SESSION['USERNAME'])) {
+    if (isset($_SESSION['ROLE'])) {
         header('Location: display-shoes');
         exit();
       }

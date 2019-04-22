@@ -62,9 +62,9 @@ public function setUserName($userName) {
         return;
     }
 
-    //if(!preg_match('/^[a-z]{3,55}$/i', $userName)) {
-    //    throw new Exception('User Name for Login does not match expected pattern');
-    //}
+    // if(!preg_match('/^[a-z]{3,55}$/i', $userName)) {
+    //    throw new Exception('User Name for registering does not match expected pattern');
+    // }
 
     $this->userName = $userName;
 }
@@ -77,9 +77,9 @@ public function setEmail($email) {
         return;
     }
 
-    //if(!preg_match('/^[a-z]{3,55}$/i', $email)) {
-    //    throw new Exception('Email for Login does not match expected pattern');
-    //}
+    // if(!preg_match('/^[a-z]{3,55}$/i', $email)) {
+    //    throw new Exception('Email for registering does not match expected pattern');
+    // }
 
     $this->email = $email;
 }
@@ -144,9 +144,9 @@ public function login(PDO $pdo,$password) {
 
     $hash = password_hash($password, PASSWORD_BCRYPT, ['cost' => 12]);
 
-    $stt = $pdo->prepare('SELECT userName, hash FROM users WHERE userName = :userName LIMIT 1');
+    $stt = $pdo->prepare('SELECT username, role, hash FROM users WHERE username = :username LIMIT 1');
     $stt->execute([
-      'userName' => $this->getUserName()
+      'username' => $this->getUserName()
     ]);
 
     $row = $stt->fetch();
@@ -156,7 +156,8 @@ public function login(PDO $pdo,$password) {
         exit();
     }
 
-    $_SESSION['USERNAME'] = $row['userName'];
+    $_SESSION['USERNAME'] = $row['username'];
+    $_SESSION['ROLE'] = $row['role'];
 
 }
 
