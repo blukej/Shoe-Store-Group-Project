@@ -4,14 +4,13 @@
 
     $db = \Rapid\Database::getPDO();
 
-    $password = $req->body('password');
-
     $user = new Login([
         'userName' => $req->body('username'),
-        'email' => $req->body('email')
+        'email' => $req->body('email'),
+        'hash' => $req->body('password')
     ]);
 
-    $user->register($db, $password);
+    $user->register($db);
 
     $res->redirect("/display-shoes");
 

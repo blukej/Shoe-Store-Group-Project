@@ -99,13 +99,8 @@ public function setEmail($email) {
 public function setHash($hash) {
 
     if($hash === NULL) {
-        $this->hash = NULL;
-        return;
+        header('Location: login?message=PASSWORD_MISSING');
     }
-
-    //if(!preg_match('/^[a-z]{3,55}$/i', $hash)) {
-    //    throw new Exception('Hash for Login does not match expected pattern');
-    //}
 
     $this->hash = $hash;
 }
@@ -124,13 +119,13 @@ public function setRole($role) {
     $this->role = $role;
 }
 
-public function register(PDO $pdo,$password) {
-   
+public function register(PDO $pdo) {
+
     if(!($pdo instanceof PDO)) {
-        throw new Exception('Invalid PDO object for Shoe save');
-        //return;
+        header('Location: register?message=INVALID_PDO');
     }
 
+    $password = $this->getHash();
     $hash = password_hash($password, PASSWORD_BCRYPT, ['cost' => 12]);
 
     $stt = $pdo->prepare('INSERT INTO users (userName, email, hash, role) 
@@ -147,14 +142,12 @@ public function register(PDO $pdo,$password) {
     return $saved;
 }
 
-public function login(PDO $pdo,$password) {
-   
+public function login(PDO $pdo) {
+
     if(!($pdo instanceof PDO)) {
         throw new Exception('Invalid PDO object for Login register');
         //return;
     }
-
-    $hash = password_hash($password, PASSWORD_BCRYPT, ['cost' => 12]);
 
     $stt = $pdo->prepare('SELECT username, role, hash FROM users WHERE username = :username LIMIT 1');
     $stt->execute([
@@ -163,9 +156,9 @@ public function login(PDO $pdo,$password) {
 
     $row = $stt->fetch();
 
-    if ($row === FALSE || password_verify($_POST['password'], $row['hash']) !== TRUE) {
-        header('Location: login?message=BAD_CREDENTIALS');
-        exit();
+    if ($row === FALSE || password_verify(\Rapid\Request::body('password'), $row['hash']) !== TRUE) {
+         header('Location: login?message=BAD_CREDENTIALS');
+         exit();
     }
 
     $_SESSION['USERNAME'] = $row['username'];
