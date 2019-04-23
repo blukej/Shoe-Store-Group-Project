@@ -14,12 +14,10 @@
     $username = $_SESSION['USERNAME'];
   }
 
-  if($role == 'user' || $role == 'manager' || $role == 'employee') {
-    $res->send('<p>You are logged in, Welcome ' . $username . '!');
-    exit();
-  }
-  else{
-    $res->send('<p>You are not logged in, please log in to view the database <a href='.'login'.'>Login</a></p>');
-  }
+  $res->render('main', 'home', [
+    'message' => $req->query('success')? 'Successful!': '',
+    'role' => $role,
+    'username' => $username   
+  ]);
 
 } ?>

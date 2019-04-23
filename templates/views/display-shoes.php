@@ -1,6 +1,6 @@
-	<h3>Product table:</h3>
+	<h3 class="h3 text-center">Product table:</h3>
 	<a href="<?= APP_BASE_URL ?>/add-shoe"> Add a shoe: </a>
-	<table>
+	<table class="table">
 		<th>ID:</th>
 		<th>Brand:</th>
 		<th>Shoe Name:</th>
@@ -20,5 +20,5 @@
 	</table>
 		<br>
 		
-	<p>You are logged in</p>
-	<p><a href='logout'>Log out?</a></p>
+	<p class="text-center">You are logged in</p>
+	<p class="text-center"><a href='logout'>Log out?</a></p>
