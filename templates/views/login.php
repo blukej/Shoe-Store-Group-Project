@@ -15,15 +15,16 @@
     <p class='<?= $message['class'] ?>'><?= $message['message'] ?></p>
   <?php } ?>
 
-<form action="<?= APP_BASE_URL ?>/login" method="post">
-    
-    <label for='Username'>Username</label>
-    <input id='Username' type='text' name='username'>
-
-    <label for='Password'>Password</label>
-    <input id='Password' type='password' name='password'>
-
-    <input type='submit' value='Login'>
-</form>
-
-<p>If you do not have an account, please register here. <a href="register"> Register </a></p>
+<div class="container">
+    <form action="<?= APP_BASE_URL ?>/login" method="post" class="form-signin">
+    <h2 class="form-signin-heading text-center">Please sign in</h2>
+    <label class="sr-only">Username</label>
+    <input id="Username" type="text" name='username' class="form-control" placeholder="Username" required autofocus>
+    <label class="sr-only">Password</label>
+    <input id="Password" type="password" name="password" class="form-control" placeholder="Password" required>
+    <div class="checkbox">
+    </div>
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+    </form>
+</div> 
+<p class="text-center">If you do not have an account, please register <a href="register"> here </a></p>

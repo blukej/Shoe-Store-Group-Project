@@ -14,19 +14,20 @@
 <?php if ($message) { ?>
     <p class='<?= $message['class'] ?>'><?= $message['message'] ?></p>
   <?php } ?>
-  
-<form action="<?= APP_BASE_URL ?>/register" method="post">
-    
-    <label for='Username'>Username</label>
-    <input id='Username' type='text' name='username'>
+   
+<div class="container">
+    <form action="<?= APP_BASE_URL ?>/register" method="post" class="form-signin">
+    <h2 class="form-signin-heading text-center">Please register</h2>
+    <label class="sr-only">Username</label>
+    <input id="Username" type="text" name='username' class="form-control" placeholder="Username" autofocus>
+    <label class="sr-only">Email</label>
+    <input id="Email" type="email" name='email' class="form-control" placeholder="Email" autofocus>
+    <label class="sr-only">Password</label>
+    <input id="Password" type="password" name="password" class="form-control" placeholder="Password" required>
+    <div class="checkbox">
+    </div>
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
+    </form>
+</div> 
 
-    <label for='Email'>Email</label>
-    <input id='Email' type='email' name='email'/>
-
-    <label for='Password'>Password</label>
-    <input id='Password' type='password' name='password'/>
-
-    <input type='submit' value='Register'>
-</form>
-
-<p>If you already have account, please log in here. <a href="login"> Login </a></p>
+<p class="text-center">If you already have an account, please log in <a href="login">here</a></p>
