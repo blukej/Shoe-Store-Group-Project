@@ -1,36 +1,4 @@
-<!-- Reference from: https://www.w3schools.com/bootstrap/tryit.asp?filename=trybs_temp_store&stacked=h -->
-
-<!-- <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-  <ol class="carousel-indicators">
-    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-  </ol>
-  <div class="carousel-inner">
-    <div class="carousel-item active text-center">
-      <img src="assets/images/SoulCal Canvas Low Mens Trainers.jpg" class="text-center w-5" alt="1">
-    </div>
-    <div class="carousel-caption d-none d-md-block">
-          <h5>SoulCal Canvas Low Mens Trainers</h5>
-        </div>
-    <div class="carousel-item text-center">
-      <img src="assets/images/Firetrap Bodie Mens Boots.jpg" class="text-center w-5" alt="3">
-    </div>
-    <div class="carousel-item text-center">
-      <img src="assets/images/Nike Downshifter 9.jpg" class="text-center w-5" alt="3">
-    </div>
-  </div>
-  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </a>
-</div> -->
-
-<div class="bd-example">
+<div class="bg-dark">
   <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators .text-secondary">
       <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
@@ -39,21 +7,21 @@
     </ol>
     <div class="carousel-inner">
       <div class="carousel-item active text-center">
-        <img src="assets/images/SoulCal Canvas Low Mens Trainers.jpg" class="w-5" alt="1">
+        <img src="assets/images/SoulCal Canvas Low Mens Trainers.jpg" class="img-responsive" alt="1">
         <div class="carousel-caption d-none d-md-block .text-secondary">
-          <p class=".text-light">SoulCal Canvas Low Mens Trainers</p>
+          <p class="text-dark">SoulCal Canvas Low Mens Trainers</p>
         </div>
       </div>
       <div class="carousel-item text-center">
-        <img src="assets/images/Firetrap Bodie Mens Boots.jpg" class="w-5" alt="2">
+        <img src="assets/images/Firetrap Bodie Mens Boots.jpg" class="img-responsive" alt="2">
         <div class="carousel-caption d-none d-md-block">
-          <h5>Firetrap Bodie Mens Boots</h5>
+        <p class="text-dark">SoulCal Canvas Low Mens Trainers</p>
         </div>
       </div>
       <div class="carousel-item text-center">
-        <img src="assets/images/Nike Downshifter 9.jpg" class="w-5" alt="3">
+        <img src="assets/images/Nike Downshifter 9.jpg" class="img-responsive" alt="3">
         <div class="carousel-caption d-none d-md-block">
-          <h5>Nike Downshifter 9</h5>
+        <p class="text-dark">SoulCal Canvas Low Mens Trainers</p>
         </div>
       </div>
     </div>
@@ -68,7 +36,7 @@
   </div>
 </div>
 
-
+<!-- Reference from: https://www.w3schools.com/bootstrap/tryit.asp?filename=trybs_temp_store&stacked=h -->
 <div class="container">    
   <div class="row">
     <div class="col-sm-4">
