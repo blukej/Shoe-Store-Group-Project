@@ -1,25 +1,25 @@
 <div class="bg-dark">
   <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
-    <ol class="carousel-indicators .text-secondary">
-      <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
-      <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
-      <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+    <ol class="carousel-indicators text-dark">
+      <li data-target="#carouselExampleCaptions" class="bg-secondary" data-slide-to="0" class="active"></li>
+      <li data-target="#carouselExampleCaptions" class="bg-secondary" data-slide-to="1"></li>
+      <li data-target="#carouselExampleCaptions" class="bg-secondary" data-slide-to="2"></li>
     </ol>
-    <div class="carousel-inner">
+    <div class="carousel-inner ">
       <div class="carousel-item active text-center">
-        <img src="assets/images/SoulCal Canvas Low Mens Trainers.jpg" class="img-responsive" alt="1">
+        <img src="assets/images/SoulCal Canvas Low Mens Trainers.jpg" class="img-fluid" alt="1">
         <div class="carousel-caption d-none d-md-block .text-secondary">
           <p class="text-dark">SoulCal Canvas Low Mens Trainers</p>
         </div>
       </div>
       <div class="carousel-item text-center">
-        <img src="assets/images/Firetrap Bodie Mens Boots.jpg" class="img-responsive" alt="2">
+        <img src="assets/images/Firetrap Bodie Mens Boots.jpg" class="img-fluid" alt="2">
         <div class="carousel-caption d-none d-md-block">
         <p class="text-dark">SoulCal Canvas Low Mens Trainers</p>
         </div>
       </div>
       <div class="carousel-item text-center">
-        <img src="assets/images/Nike Downshifter 9.jpg" class="img-responsive" alt="3">
+        <img src="assets/images/Nike Downshifter 9.jpg" class="img-fluid" alt="3">
         <div class="carousel-caption d-none d-md-block">
         <p class="text-dark">SoulCal Canvas Low Mens Trainers</p>
         </div>
