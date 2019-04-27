@@ -12,6 +12,6 @@
 
     $user->register($db);
 
-    $res->redirect("/display-shoes");
+    $res->redirect("/login");
 
 }?>
