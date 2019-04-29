@@ -19,10 +19,12 @@
   $app->GET('/update-shoe',   'UpdateShoe');
   $app->GET('/delete-shoe',   'DeleteShoe');
   $app->GET('/products',      'Product');
+  $app->GET('/reviews',       'Reviews');
   $app->POST('/add-shoe',     'AddShoeProcess');
   $app->POST('/update-shoe',  'UpdateShoeProcess');
   $app->POST('/login',        'LoginProcess');
   $app->POST('/register',     'RegisterProcess');
+  $app->POST('/reviews',      'ReviewProcess');
 
   
 
