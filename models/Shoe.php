@@ -6,6 +6,7 @@ private $name;
 private $brand;
 private $size;
 private $price;
+private $url;
 
 
 
@@ -20,12 +21,14 @@ public function __construct($args) {
     $this->setBrand($args['brand'] ?? NULL);
     $this->setSize($args['size'] ?? NULL);
     $this->setPrice($args['price'] ?? NULL);
+    $this->setURL($args['url'] ?? NULL);
 
     $this->id = $args['id']     ?? NULL;
     $this->name = $args['name'] ?? 'Untilted Shoe';
     $this->brand = $args['brand'] ?? 'Untilted Brand';
     $this->size = $args['size'] ?? 'Untilted Size';
     $this->price = $args['price'] ?? 'Untilted Price';
+    $this->url = $args['url'] ?? 'Untilted URL';
 }
 
 public function getID() {
@@ -46,6 +49,9 @@ public function getSize() {
 
 public function getPrice() {
     return $this->price;
+}
+public function getURL() {
+    return $this->url;
 }
 
 public function setID($id) {
@@ -118,6 +124,20 @@ public function setPrice($price) {
     $this->price = $price;
 }
 
+public function setURL($brand) {
+
+    if($url === NULL) {
+        $this->url = NULL;
+        return;
+    }
+
+    // if(!preg_match('/^[a-z0-9\s]{3,55}$/i', $brand)) {
+    //     throw new Exception('Brand for Shoe does not match expected pattern');
+    // }
+
+    $this->url = $url;
+}
+
 public function save(PDO $pdo) {
    
     if(!($pdo instanceof PDO)) {
@@ -129,13 +149,14 @@ public function save(PDO $pdo) {
    
    // if($this->id === NULL) {
         // Insert
-        $stt = $pdo->prepare('INSERT INTO shoes (name, brand, size, price) 
-        VALUES (:name, :brand, :size, :price)');
+        $stt = $pdo->prepare('INSERT INTO shoes (name, brand, size, price, url) 
+        VALUES (:name, :brand, :size, :price, :url)');
         $stt->execute([
             'name' => $this->getName(),
             'brand' => $this->getBrand(),
             'size' => $this->getSize(),
-            'price' => $this->getPrice()
+            'price' => $this->getPrice(),
+            'url' => $this->getURL()
         ]);
 
         $saved = $stt->rowCount() === 1;
@@ -193,7 +214,7 @@ public function findAll($pdo) {
         throw new Exception('Invalid PDO object for Shoe findAll');
     }
 
-    $stt = $pdo->prepare('SELECT id, name, brand, size, price FROM shoes');
+    $stt = $pdo->prepare('SELECT id, name, brand, size, price, url FROM shoes');
     $stt->execute();
 
     return $stt;
@@ -225,7 +246,7 @@ public static function findOneById($id, $pdo) {
 
 public function update($id, $pdo) {
     //Update
-        $stt = $pdo->prepare('UPDATE shoes SET name=:name, brand=:brand, size=:size, price=:price
+        $stt = $pdo->prepare('UPDATE shoes SET name=:name, brand=:brand, size=:size, price=:price, url=:url
         WHERE id=:id
         LIMIT 1');
         $stt->execute([
@@ -233,7 +254,8 @@ public function update($id, $pdo) {
              'name' => $this->getName(),
              'brand' => $this->getBrand(),
              'size' => $this->getSize(),
-             'price' => $this->getPrice()
+             'price' => $this->getPrice(),
+             'url' => $this->getURL()
         ]);      
 }
 
