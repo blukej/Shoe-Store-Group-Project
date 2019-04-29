@@ -37,21 +37,23 @@
 </div>
 
 <!-- Reference from: https://www.w3schools.com/bootstrap/tryit.asp?filename=trybs_temp_store&stacked=h -->
-<div class="container">
-<div class="row">
-<div class="col-sm-4">
+
 <?php foreach($locals['displayShoes'] as $display) : ?>
 <?php $count++; ?>
-      <div class="panel panel-primary">
-        <div class="panel-body"><img src="assets/images/<?= $display["url"]; ?>" class="img-responsive" style="width:100%" alt="Image1"></div>
-        <div class="panel-heading"><?= $display["name"]; ?></div>
-        <div class="panel-footer">€<?= $display["price"]; ?></div>
-        <div class="panel-footer">Sizes: <?= $display["size"]; ?></div>
-      </div>    
-<?php endforeach; ?>
+<div class="container text-center">
+<div class="row">
+<div class="col- w-100">
+
+        <div class="panel-body"><img src="assets/images/<?= $display["url"]; ?>" class="img-responsive" style="width:40%" alt="Image1"></div>
+        <div class="panel-heading h2"><?= $display["name"]; ?></div>
+        <div class="panel-footer h2">€<?= $display["price"]; ?></div>
+        <div class="panel-footer h2">Sizes: <?= $display["size"]; ?></div>
+
 </div>
 </div>
 </div><br>
+<?php endforeach; ?>
+
 <!-- <div class="container">    
   <div class="row">
     <div class="col-sm-4">
