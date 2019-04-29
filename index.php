@@ -18,6 +18,7 @@
   $app->GET('/register',      'Register'); 
   $app->GET('/update-shoe',   'UpdateShoe');
   $app->GET('/delete-shoe',   'DeleteShoe');
+  $app->GET('/products',      'Product');
   $app->POST('/add-shoe',     'AddShoeProcess');
   $app->POST('/update-shoe',  'UpdateShoeProcess');
   $app->POST('/login',        'LoginProcess');

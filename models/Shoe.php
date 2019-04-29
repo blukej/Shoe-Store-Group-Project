@@ -69,7 +69,7 @@ public function setName($name) {
         return;
     }
 
-    if(!preg_match('/^[a-z]{3,55}$/i', $name)) {
+    if(!preg_match('/^[a-z0-9\s]{3,55}$/i', $name)) {
         throw new Exception('Name for Shoe does not match expected pattern');
     }
 
@@ -83,7 +83,7 @@ public function setBrand($brand) {
         return;
     }
 
-    if(!preg_match('/^[a-z]{3,55}$/i', $brand)) {
+    if(!preg_match('/^[a-z0-9\s]{3,55}$/i', $brand)) {
         throw new Exception('Brand for Shoe does not match expected pattern');
     }
 
