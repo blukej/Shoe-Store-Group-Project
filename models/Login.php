@@ -17,12 +17,6 @@ public function __construct($args) {
     $this->setEmail($args['email'] ?? NULL);
     $this->setHash($args['hash'] ?? NULL);
     $this->setRole($args['role'] ?? NULL);
-
-    $this->userID = $args['userID']     ?? NULL;
-    $this->userName = $args['userName'] ?? 'Untilted userName';
-    $this->email = $args['email'] ?? 'Untilted Email';
-   // $this->hash = $args['hash'] ?? 'Untilted Hash';
-   // $this->role = $args['role'] ?? 'Untilted Role';
 }
 
 public function getUserID() {
@@ -64,19 +58,15 @@ public function setUserName($userName) {
         if($path === '/login'){
             header('Location: login?message=USERNAME_MISSING');
             $this->userName = NULL;
-            return;
+            exit();
             
         }
-        else{
+        else if($path === '/register'){
             header('Location: register?message=USERNAME_MISSING');
             $this->userName = NULL;
-            return;
+            exit();
         }
     }
-
-    // if($userName == NULL) {
-    //    throw new Exception('User Name for registering does not match expected pattern');
-    // }
 
     $this->userName = $userName;
 }
@@ -84,13 +74,15 @@ public function setUserName($userName) {
 
 public function setEmail($email) {
 
-    if($email === NULL) {
-        $this->email = NULL;
-        return;
-    }
+    $rapid = new \Rapid\Request;
+    $path = $rapid->getLocalPath();
 
-    if(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-       throw new Exception('Email for registering does not match expected pattern');
+    if($email == NULL) {
+        if($path === '/register'){
+        header('Location: register?message=EMAIL_MISSING');
+        $this->email = NULL;
+        exit(); 
+        }
     }
 
     $this->email = $email;
@@ -98,11 +90,32 @@ public function setEmail($email) {
 
 public function setHash($hash) {
 
-    if($hash === NULL) {
-        header('Location: login?message=PASSWORD_MISSING');
+    $rapid = new \Rapid\Request;
+    $path = $rapid->getLocalPath();
+
+    if($hash == NULL) {
+        if($path === '/login'){
+            header('Location: login?message=PASSWORD_MISSING');
+            $this->hash = NULL;
+            exit();
+        }
+        else if($path === '/register'){
+            header('Location: register?message=PASSWORD_MISSING');
+            $this->hash = NULL;
+            exit();
+        }
+    }
+    
+    if($path === '/register'){
+        if(strlen($hash) <= '8' || !preg_match("#[0-9]+#",$hash) || !preg_match("#[A-Z]+#",$hash) || !preg_match("#[a-z]+#",$hash)){
+            header('Location: register?message=PASSWORD_INVALID');
+            $this->hash = NULL;
+            exit();
+        }
     }
 
     $this->hash = $hash;
+    
 }
 
 public function setRole($role) {
@@ -111,10 +124,6 @@ public function setRole($role) {
         $this->role = NULL;
         return;
     }
-
-    //if(!preg_match('/^[a-z]{3,55}$/i', $role)) {
-    //    throw new Exception('Role for Login does not match expected pattern');
-    //}
 
     $this->role = $role;
 }
@@ -127,6 +136,16 @@ public function register(PDO $pdo) {
 
     $password = $this->getHash();
     $hash = password_hash($password, PASSWORD_BCRYPT, ['cost' => 12]);
+
+    if($this->findOneByUsername($this->getUserName(), $pdo) == TRUE ){
+        header('Location: register?message=USERNAME_TAKEN');
+        exit();
+    }
+
+    if($this->findOneByEmail($this->getEmail(), $pdo) == TRUE ){
+        header('Location: register?message=EMAIL_TAKEN');
+        exit();
+    }
 
     $stt = $pdo->prepare('INSERT INTO users (userName, email, hash, role) 
     VALUES (:userName, :email, :hash, :role)');
@@ -146,7 +165,6 @@ public function login(PDO $pdo) {
 
     if(!($pdo instanceof PDO)) {
         throw new Exception('Invalid PDO object for Login register');
-        //return;
     }
 
     $stt = $pdo->prepare('SELECT username, role, hash FROM users WHERE username = :username LIMIT 1');
@@ -164,6 +182,46 @@ public function login(PDO $pdo) {
     $_SESSION['USERNAME'] = $row['username'];
     $_SESSION['ROLE'] = $row['role'];
 
+}
+
+public static function findOneByUsername($username, $pdo) {
+
+    if (!($pdo instanceof PDO)) {
+        throw new Exception('Invalid PDO object for Login findOneByUsername');
+    }
+
+    $stt = $pdo->prepare('SELECT username FROM users WHERE username = :username LIMIT 1');
+    $stt->execute([
+        'username' => $username
+    ]);
+
+    if ($stt->rowCount() > 0) {
+        $bool = True;
+      } else {
+         $bool = False;
+      }
+
+      return $bool;
+}
+
+public static function findOneByEmail($email, $pdo) {
+
+    if (!($pdo instanceof PDO)) {
+        throw new Exception('Invalid PDO object for Login findOneByUsername');
+    }
+
+    $stt = $pdo->prepare('SELECT email FROM users WHERE email = :email LIMIT 1');
+    $stt->execute([
+        'email' => $email
+    ]);
+
+    if ($stt->rowCount() > 0) {
+        $bool = True;
+      } else {
+         $bool = False;
+      }
+
+      return $bool;
 }
 
 }?>
