@@ -13,6 +13,7 @@ $res->render('main', 'update-shoe', [
    'brand'      => $arr[0]['brand'],
    'size'      => $arr[0]['size'],
    'price'      => $arr[0]['price'],
+   'url'      => $arr[0]['url'],
 ]);
 
 } ?>
