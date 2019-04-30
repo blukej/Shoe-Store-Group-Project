@@ -15,11 +15,12 @@
     <p class='<?= $message['class'] ?> text-center'><?= $message['message'] ?></p>
   <?php } ?>
 
-<div class="container">
+<div class="container w-25">
     <form action="<?= APP_BASE_URL ?>/login" method="post" class="form-signin">
     <h2 class="form-signin-heading text-center">Please sign in</h2>
     <label class="sr-only">Username</label>
     <input id="Username" type="text" name='username' class="form-control" placeholder="Username" autofocus>
+    <br>
     <label class="sr-only">Password</label>
     <input id="Password" type="password" name="password" class="form-control" placeholder="Password">
     <div class="checkbox">
