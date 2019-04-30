@@ -8,7 +8,8 @@
         'name' => $req->body('name'),
         'brand' => $req->body('brand'),
         'size' => $req->body('size'),
-        'price' => $req->body('price')
+        'price' => $req->body('price'),
+        'url' => $req->body('url')
     ]);
 
     $shoe->update($id, $db);

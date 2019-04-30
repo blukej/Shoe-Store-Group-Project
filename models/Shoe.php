@@ -124,7 +124,7 @@ public function setPrice($price) {
     $this->price = $price;
 }
 
-public function setURL($brand) {
+public function setURL($url) {
 
     if($url === NULL) {
         $this->url = NULL;
@@ -229,7 +229,7 @@ public static function findOneById($id, $pdo) {
     //    throw new Exception('Invalid PDO object for Shoe findOneById');
     //}
 
-    $stt = $pdo->prepare('SELECT name, brand, size, price FROM shoes WHERE id = :id LIMIT 1');
+    $stt = $pdo->prepare('SELECT name, brand, size, price, url FROM shoes WHERE id = :id LIMIT 1');
     $stt->execute([
         'id' => $id
     ]);

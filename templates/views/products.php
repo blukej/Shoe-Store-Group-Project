@@ -48,6 +48,9 @@
         <div class="panel-heading h2"><?= $display["name"]; ?></div>
         <div class="panel-footer h2">€<?= $display["price"]; ?></div>
         <div class="panel-footer h2">Sizes: <?= $display["size"]; ?></div>
+        
+        <input type='submit' class="btn btn-primary panel-footer h2" value='Add to cart'>
+        
 
 </div>
 </div>
