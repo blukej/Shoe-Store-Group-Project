@@ -3,6 +3,7 @@
 private $reviewID;
 private $userName;
 private $review;
+private $shoe;
 
 public function __construct($args) {
 
@@ -13,6 +14,7 @@ public function __construct($args) {
     $this->setReviewID($args['reviewID'] ?? NULL);
     $this->setUserName($args['userName'] ?? NULL);
     $this->setReview($args['review'] ?? NULL);
+    $this->setShoe($args['shoe'] ?? NULL);
 }
 
 public function getReviewID() {
@@ -25,6 +27,10 @@ public function getUserName() {
 
 public function getReview() {
     return $this->review;
+}
+
+public function getShoe() {
+    return $this->shoe;
 }
 
 public function setReviewID($reviewID) {
@@ -49,12 +55,23 @@ public function setUserName($userName) {
 
 public function setReview($review) {
     
-    if($review === NULL) {
-       $this->review = NULL;
-       return;
+    if($review == NULL) {
+        header('Location:reviews?message=REVIEW_MISSING');
+        $this->review = NULL;
+        exit;
     }
 
    $this->review = $review;
+}
+
+public function setShoe($shoe) {
+    
+    if($shoe === NULL) {
+       $this->shoe = NULL;
+       return;
+    }
+
+   $this->shoe = $shoe;
 }
 
 public function save(PDO $pdo) {
@@ -63,11 +80,12 @@ public function save(PDO $pdo) {
         throw new Exception('Invalid PDO object for Review save');
     }
 
-        $stt = $pdo->prepare('INSERT INTO reviews (userName, review) 
-        VALUES (:userName, :review)');
+        $stt = $pdo->prepare('INSERT INTO reviews (userName, review, shoe) 
+        VALUES (:userName, :review, :shoe)');
         $stt->execute([
             'userName' => $this->getUserName(),
-            'review' => $this->getReview()
+            'review' => $this->getReview(),
+            'shoe' => $this->getShoe()
         ]);
 
         $saved = $stt->rowCount() === 1;
@@ -80,7 +98,7 @@ public function findAll($pdo) {
         throw new Exception('Invalid PDO object for Review findAll');
     }
 
-    $stt = $pdo->prepare('SELECT userName, review FROM reviews');
+    $stt = $pdo->prepare('SELECT userName, review, shoe FROM reviews');
     $stt->execute();
 
     return $stt;
