@@ -1,5 +1,5 @@
 <form action="<?= APP_BASE_URL ?>/add-shoe" method="post">
-    
+<div class="container w-50"> 
     <div class="form-group col-sm-10">
     <label for='Brand'>Brand</label>
     <input id='Brand' class="form-control"  type='text' name='brand'>
@@ -28,4 +28,5 @@
     <div class="col-sm-10">
     <input type='submit' class="btn btn-primary" value='Submit'>
     </div>
+</div>
 </form>
