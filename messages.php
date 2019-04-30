@@ -3,6 +3,7 @@
 'USERNAME_MISSING'      => ['class' => 'error',   'message' => 'Username is required'],
 'PASSWORD_MISSING'      => ['class' => 'error',   'message' => 'Password is required'],
 'EMAIL_MISSING'         => ['class' => 'error',   'message' => 'Email is required'],
+'REVIEW_MISSING'        => ['class' => 'error',   'message' => 'Please enter a review'],
 'PASSWORD_CONF_MISSING' => ['class' => 'error',   'message' => 'Password Confirmation is required'],
 'PASSWORD_MISMATCH'     => ['class' => 'error',   'message' => 'Password and password confirmation do not match'],
 'BAD_CREDENTIALS'       => ['class' => 'error',   'message' => 'Email address or password is incorrect'],
