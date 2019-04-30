@@ -75,4 +75,15 @@ public function save(PDO $pdo) {
         return $saved;
 }
 
+public function findAll($pdo) {
+    if (!$pdo instanceof PDO) {
+        throw new Exception('Invalid PDO object for Review findAll');
+    }
+
+    $stt = $pdo->prepare('SELECT userName, review FROM reviews');
+    $stt->execute();
+
+    return $stt;
+}
+
 }?>

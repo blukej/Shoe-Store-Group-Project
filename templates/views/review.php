@@ -6,3 +6,8 @@
 
     <input type='submit' value='Submit Review'>
 </form>
+
+<?php foreach($locals['displayReviews'] as $review) : ?>
+    <?= $review["userName"]; ?>
+    <?= $review["review"]; ?>
+<?php endforeach; ?>    

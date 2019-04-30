@@ -10,8 +10,6 @@
 
   $db = \Rapid\Database::getPDO();
 
-  echo $req->body('userName');
-
   $review = new Review([
     'userName' => $req->body('userName'),
     'review' => $req->body('review_content'),
@@ -19,6 +17,6 @@
 
   $review->save($db);
 
-  //$res->redirect("/reviews");
+  $res->redirect("/reviews");
 
 } ?>
