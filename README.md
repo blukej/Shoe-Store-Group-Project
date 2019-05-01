@@ -10,7 +10,7 @@ This project uses 4 models, one for Login and registering, one for shoes and rev
 * Full login and registration system
 * User Reviews
 * Products Page
-* Newsfeed using AJAX
+* Validation using AJAX
 
 # How does the MVC work in this project?
 For this I'll use the insert for the shoes table as a basic example:
@@ -59,9 +59,22 @@ public function save(PDO $pdo) {
 }
 ```
 
-When the form is submitted the POST sends the data to the AddShoeProcess controller which then sends the posted data to the Shoe model which is passed to the save function which then does validation before inserting the new shoe into the database. And that is brief overview of how the MVC framework functions in my project.
+When the form is submitted the POST sends the data to the AddShoeProcess controller which then sends the posted data to the Shoe model which is passed to the save function which then does validation before inserting the new shoe into the database. And that is brief overview of how the MVC framework functions in our project.
 
 # What can a User do?
+When a user first visits the website the will see the homepage with a login and register button in the nav bar. When they have logged in/signed up, the login and register buttons are replaced with a logout button.
+
+<img src="assets\readmeImages\1.png" alt="1" width="960" height="540" />
+
+<img src="assets\readmeImages\2.png" alt="2" width="960" height="540" />
+
+Managers(who have hardcoded entries in the database, i.e signing up does not give you the ability the be a manager) can also see the add shoes and display shoes pages.
+
+<img src="assets\readmeImages\6.png" alt="6" width="1368" height="540" />
+
+Reviews can be left by users and non-users(who are called anonymous).
+
+<img src="assets\readmeImages\3.png" alt="3" width="1080" height="540" />
 
 # To-do List
 
@@ -69,6 +82,8 @@ When the form is submitted the POST sends the data to the AddShoeProcess control
 2. Better validation for the Shoe Model.
 3. Search function with filters.
 4. Incorporate Ajax into validation, i.e when registering a user, it updates in real time telling them whether or not it is valid.
+5. Seperate Ajax into a seperate file, and add more Ajax validation to other forms.
+6. Allow managers to delete reviews.
 
 # Sources
 
@@ -82,3 +97,4 @@ When the form is submitted the POST sends the data to the AddShoeProcess control
 * https://2019-moodle.dkit.ie/mod/url/view.php?id=288367
 * https://2019-moodle.dkit.ie/mod/url/view.php?id=290833
 * https://2019-moodle.dkit.ie/mod/url/view.php?id=290835
+* https://www.youtube.com/watch?v=L7Sn-f36TGM 
