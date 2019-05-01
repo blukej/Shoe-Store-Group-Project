@@ -15,7 +15,7 @@
     </script>    
   <meta charset='UTF-8'>
   <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-  <title>Rapid Starter Project</title>
+  <title>Big Brain Shoe Shop</title>
 </head>
 <?php 
 if (!isset($locals['role']) || $locals['role'] == ''){
