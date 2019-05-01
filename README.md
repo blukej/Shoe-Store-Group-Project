@@ -72,12 +72,16 @@ Managers(who have hardcoded entries in the database, i.e signing up does not giv
 
 
 
-<img src="assets/readmeImages/6.png" alt="6" width="1368" height="540" />
+<img src="assets/readmeImages/Screenshot_1.png" alt="6" width="1080" height="540" />
 
 Reviews can be left by users and non-users(who are called anonymous).
 
 
 <img src="assets/readmeImages/3.png" alt="3" width="1080" height="540" />
+
+# How to set up this project
+
+Download the repository and create a file called config.php in the root of the project and copy the contents of config.php.sample and fill in your values.
 
 # To-do List
 
