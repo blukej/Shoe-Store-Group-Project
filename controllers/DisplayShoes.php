@@ -3,9 +3,19 @@
 
   session_start();
 
-  if (!isset($_SESSION['ROLE'])) {
-    header('Location: login');
+  if (($_SESSION['ROLE']) != 'manager') {
+    header('Location: home');
     exit();
+  }
+
+  $role = '';
+  if(!empty($_SESSION['ROLE'])) {
+    $role = $_SESSION['ROLE'];
+  }
+  
+  $username = '';
+  if(!empty($_SESSION['USERNAME'])) {
+    $username = $_SESSION['USERNAME'];
   }
 
   $res->status(501);
@@ -14,7 +24,8 @@
   $shoes = Shoe::findAll($db);
 
   $res->render('main', 'display-shoes', [
-
+    'username'       => $username,
+    'role'         => $role,
     'displayShoes' => $shoes->fetchAll()
 ]);
 

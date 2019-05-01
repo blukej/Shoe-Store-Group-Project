@@ -3,11 +3,6 @@
 
   session_start();
 
-  if (!isset($_SESSION['ROLE'])) {
-    header('Location: login');
-    exit();
-  }
-
   $db = \Rapid\Database::getPDO();
 
   $review = new Review([

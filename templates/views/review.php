@@ -38,6 +38,9 @@
 <div class="container w-15" style="margin-top: 55px;">
     <div class="card">
         <h5 class="card-header">
+         <?php if(empty($review["userName"])){
+             $review["userName"] = 'Anonymous';
+         } ?>
          <?='Review on '. $review["shoe"] . ' by - '. $review["userName"];?>
          </h5>   
          <div class="card-body">

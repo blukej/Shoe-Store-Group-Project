@@ -4,18 +4,24 @@
 
   session_start();
 
-  if (!isset($_SESSION['ROLE'])) {
-    header('Location: login');
-    exit();
-  }
-
   $res->status(501);
   $db = \Rapid\Database::getPDO();
   $reviews = Review::findAll($db);
   $shoes = Shoe::findAll($db);
 
+  $role = '';
+  if(!empty($_SESSION['ROLE'])) {
+    $role = $_SESSION['ROLE'];
+  }
+  
+  $username = '';
+  if(!empty($_SESSION['USERNAME'])) {
+    $username = $_SESSION['USERNAME'];
+  }
+
   $res->render('main', 'review', [
-    'userName'       => $_SESSION['USERNAME'],
+    'userName'       => $username,
+    'role'           => $role,
     'displayReviews' => $reviews->fetchAll(),
     'displayShoes'   => $shoes->fetchAll()
 ]);

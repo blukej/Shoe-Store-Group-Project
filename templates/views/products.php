@@ -15,13 +15,13 @@
       <div class="carousel-item text-center">
         <img src="assets/images/Firetrap Bodie Mens Boots.jpg" class="img-fluid" alt="2">
         <div class="carousel-caption d-none d-md-block">
-        <p class="text-dark">SoulCal Canvas Low Mens Trainers</p>
+        <p class="text-dark">Bodie Mens Boots</p>
         </div>
       </div>
       <div class="carousel-item text-center">
         <img src="assets/images/Nike Downshifter 9.jpg" class="img-fluid" alt="3">
         <div class="carousel-caption d-none d-md-block">
-        <p class="text-dark">SoulCal Canvas Low Mens Trainers</p>
+        <p class="text-dark">Downshifter 9</p>
         </div>
       </div>
     </div>
@@ -54,6 +54,3 @@
 </div>
 </div><br>
 <?php endforeach; ?>
-
-	<p class="text-center">You are logged in</p>
-	<p class="text-center"><a href='logout'>Log out?</a></p>
