@@ -3,8 +3,8 @@
 
   session_start();
 
-  if (!isset($_SESSION['ROLE'])) {
-    header('Location: login');
+  if (($_SESSION['ROLE']) != 'manager') {
+    header('Location: home');
     exit();
   }
 

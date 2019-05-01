@@ -1,3 +1,4 @@
+	<?session_start();?>
 	<h3 class="h3 text-center">Product table:</h3>
 	<a href="<?= APP_BASE_URL ?>/add-shoe"> Add a shoe: </a>
 	<table class="table table-hover table-bordered table-striped text-center">
