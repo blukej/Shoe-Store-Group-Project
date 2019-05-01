@@ -64,17 +64,19 @@ When the form is submitted the POST sends the data to the AddShoeProcess control
 # What can a User do?
 When a user first visits the website the will see the homepage with a login and register button in the nav bar. When they have logged in/signed up, the login and register buttons are replaced with a logout button.
 
-<img src="assets\readmeImages\1.png" alt="1" width="960" height="540" />
+![1](assets\readmeImages\1.png)
 
-<img src="assets\readmeImages\2.png" alt="2" width="960" height="540" />
+![2](assets\readmeImages\2.png)
+
 
 Managers(who have hardcoded entries in the database, i.e signing up does not give you the ability the be a manager) can also see the add shoes and display shoes pages.
 
-<img src="assets\readmeImages\6.png" alt="6" width="1368" height="540" />
+![6](assets\readmeImages\6.png)
+
 
 Reviews can be left by users and non-users(who are called anonymous).
 
-<img src="assets\readmeImages\3.png" alt="3" width="1080" height="540" />
+![3](assets\readmeImages\3.png)
 
 # To-do List
 
