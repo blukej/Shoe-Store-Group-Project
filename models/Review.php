@@ -54,6 +54,8 @@ public function setUserName($userName) {
 }
 
 public function setReview($review) {
+
+    $review = htmlentities($review, ENT_QUOTES, 'UTF-8');
     
     if($review == NULL) {
         header('Location:reviews?message=REVIEW_MISSING');
