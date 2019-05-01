@@ -21,6 +21,7 @@
 
   $res->render('main', 'review', [
     'userName'       => $username,
+    'role'           => $role,
     'displayReviews' => $reviews->fetchAll(),
     'displayShoes'   => $shoes->fetchAll()
 ]);
